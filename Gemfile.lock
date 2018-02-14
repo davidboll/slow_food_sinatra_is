@@ -124,7 +124,7 @@ DEPENDENCIES
   database_cleaner (~> 1.4.1)
   factory_bot
   launchy
-  pg
+  pg (~> 0.21.0)
   pry-byebug
   rack-test
   rake
