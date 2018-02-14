@@ -47,7 +47,7 @@ namespace :generate do
     puts "Creating #{path}"
     File.open(path, 'w+') do |f|
       f.write(<<-EOF.strip_heredoc)
-        class #{name} < ActiveRecord::Migration
+        class #{name} < ActiveRecord::Migration[4.2]
           def change
           end
         end
@@ -128,7 +128,7 @@ end
 
 desc 'Start IRB with application environment loaded'
 task "console" do
-  exec "irb -r./config/environment"
+  exec "irb -r ./config/environment"
 end
 
 task :default  => :spec
