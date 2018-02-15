@@ -30,6 +30,7 @@ end
 
 group :test, :development do
   gem 'factory_bot'
+  gem 'cucumber', '~> 2.4'
   gem 'pry-byebug'
   gem 'timecop'
 end
