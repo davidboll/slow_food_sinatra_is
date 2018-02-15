@@ -138,7 +138,7 @@ DEPENDENCIES
   sinatra-flash
   sinatra-redirect-with-flash
   timecop
-  warden (= 1.2.1)
+  warden
 
 RUBY VERSION
    ruby 2.4.1p111
