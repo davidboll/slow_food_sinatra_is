@@ -14,15 +14,14 @@ end
 Then(/^he fills in input field "([^"]*)" with "([^"]*)"$/) do |arg1, arg2|
     fill_in(arg1, :with => arg2)
     fill_in(arg1, :with => arg2)
-    #fill_in(password, :with => '12345')
 end
 
-Then(/^he clicks a "([^"]*)" button$/) do |arg1|
-  click_button('login')
+Then(/^he clicks a "([^"]*)" button$/) do |link_text|
+  click_link_or_button link_text
 end
 
-Then(/^then he is redirected to "([^"]*)" page$/) do |arg1|
-   visit('/')
+Then(/^he is redirected to "([^"]*)" page$/) do |arg1|
+  expect(page.current_path).to eq "/"
 end
 
 Then(/^show me the page$/) do
