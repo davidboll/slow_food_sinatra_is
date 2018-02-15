@@ -6,8 +6,9 @@ Feature: User login feature
   Scenario:
     When a customer visits a login page
     Then he should see text "Please login!"
+    And show me the page
     And he should see a form
     And he fills in input field "Email" with "test@test.com"
     And he fills in input field "Password" with "12345"
     Then he clicks a "login" button
-    And then he is redirected to "menu" page 
+    And then he is redirected to "menu" page
