@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'warden'
 
-class SlowFoodApp
+class SlowFoodApp #< Sinatra::Application
 
   post  '/process_login' do
      # 1 Try to login the user using Warden (gem)
@@ -26,16 +26,19 @@ class SlowFoodApp
   end
 
   post "/auth/create" do
-    user = User.new(params[:user])
+    #binding.pry
+    user = User.new(params)
     if user.valid?
+      #binding.pry
       user.save
       env['warden'].authenticate!
-      flash[:success] = "Successfully created account for #{current_user.username}"
-      redirect '/'
+      flash[:success] = "Successfully created account for #{current_user.email}"
+        redirect '/'
     else
+      #binding.pry
       flash[:error] = user.errors.full_messages.join(',')
+      redirect '/auth/create'
     end
-    redirect '/auth/create'
   end
 
   post '/session' do
@@ -54,50 +57,6 @@ class SlowFoodApp
 
   post "/unauthenticated" do
     redirect "/fuckoff"
-  end
-
-  # Warden configuration code
-  use Rack::Session::Cookie, secret: "IdoNotHaveAnySecret"
-  use Rack::Flash, accessorize: [:error, :success]
-
-  use Warden::Manager do |manager|
-    manager.default_strategies :password
-    manager.failure_app = SlowFoodApp
-    manager.serialize_into_session {|user| user.id}
-    manager.serialize_from_session {|id| Datastore.for(:user).find_by_id(id)}
-  end
-
-  Warden::Manager.before_failure do |env,opts|
-    env['REQUEST_METHOD'] = 'POST'
-  end
-
-  Warden::Strategies.add(:password) do
-    def valid?
-      params["email"] || params["password"]
-    end
-
-    def authenticate!
-      user = Datastore.for(:user).find_by_email(params["email"])
-      if user && user.authenticate(params["password"])
-        success!(user)
-      else
-        fail!("Could not log in")
-      end
-    end
-  end
-
-  def warden_handler
-    env['warden']
-  end
-
-  def check_authentication
-    unless warden_handler.authenticated?
-      redirect '/login'
-    end
-  end
-
-  def current_user
-    warden_handler.user
   end
 
 end

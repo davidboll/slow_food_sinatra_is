@@ -5,7 +5,7 @@ Feature: User register feature
 
   Scenario:
     When a customer visits a register page
-    Then he should see text "Please register!"
+    #Then he should see text "Please register!"
     #And show me the page
     And he fills in input field "Email" with "test@test.com"
     And he fills in input field "Password" with "12345"
