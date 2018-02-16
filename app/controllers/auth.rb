@@ -1,8 +1,7 @@
 require 'sinatra'
 require 'warden'
 
-class SlowFoodApp #< Sinatra::Application
-
+class SlowFoodApp
   post  '/process_login' do
      # 1 Try to login the user using Warden (gem)
      #check_authentication
@@ -46,7 +45,7 @@ class SlowFoodApp #< Sinatra::Application
     if warden_handler.authenticated?
       redirect "/users/#{warden_handler.user.id}"
     else
-      redirect "/"
+      redirect '/'
     end
   end
 
@@ -56,7 +55,7 @@ class SlowFoodApp #< Sinatra::Application
   end
 
   post "/unauthenticated" do
-    redirect "/fuckoff"
+    redirect '/'
   end
 
 end
