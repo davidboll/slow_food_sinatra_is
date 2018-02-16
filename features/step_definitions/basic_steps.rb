@@ -1,19 +1,17 @@
-
 When(/^a customer visits a login page$/) do
   visit '/login'
 end
 
 Then(/^he should see text "([^"]*)"$/) do |text|
-   page.should have_content(text)
+  expect(page).to have_content text
 end
 
 Then(/^he should see a form$/) do
-  page.has_content?('form')
+  expect(page).to have_css 'form'
 end
 
-Then(/^he fills in input field "([^"]*)" with "([^"]*)"$/) do |arg1, arg2|
-    fill_in(arg1, :with => arg2)
-    fill_in(arg1, :with => arg2)
+Then(/^he fills in input field "([^"]*)" with "([^"]*)"$/) do |field_name, value|
+  fill_in field_name, with: value
 end
 
 Then(/^he clicks a "([^"]*)" button$/) do |link_text|
@@ -21,7 +19,7 @@ Then(/^he clicks a "([^"]*)" button$/) do |link_text|
 end
 
 Then(/^he is redirected to "([^"]*)" page$/) do |arg1|
-  expect(page.current_path).to eq "/"
+  expect(page.current_path).to eq '/'
 end
 
 Then(/^show me the page$/) do
@@ -43,4 +41,9 @@ end
 
 Then(/^Customer should see "([^"]*)"$/) do |text|
   expect(page).to have_content text
+end
+
+
+Given(/^a user with "([^"]*)" with password "([^"]*)" exist$/) do |email, password|
+  User.create!(email: email, password: password)
 end

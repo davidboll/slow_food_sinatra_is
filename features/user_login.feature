@@ -1,11 +1,14 @@
 Feature: User login feature
   As a customer
-  in order to be able to order food
+  In order to be able to order food
   I would like to become a registered user.
+
+  Background:
+    Given a user with "test@test.com" with password "12345" exist
 
   Scenario:
     When a customer visits a login page
-    Then he should see text "Please login!"
+    #Then he should see text "Please login!"
     #And show me the page
     And he fills in input field "Email" with "test@test.com"
     And he fills in input field "Password" with "12345"
