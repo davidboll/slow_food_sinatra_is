@@ -1,10 +1,10 @@
 Welcome to Inglorious Bites!
 <% @menus.each do |menu| %>
-  <h1><%= menu.name %></h1>
-  <h3>Dishes:</h3>
+  <h1><%= menu.name %>:</h1>
   <% menu.products.each do |product| %>
     <h4>
       <%= product.name %>
     </h4>
+    <p><%= product.price %> kr </p>
   <% end %>
 <% end %>
