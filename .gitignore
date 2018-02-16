@@ -25,4 +25,5 @@ chromedriver.log
 bin/
 .env
 *.swp
+
 capybara-*

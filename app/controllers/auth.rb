@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'warden'
 
+<<<<<<< HEAD
 class SlowFoodApp #< Sinatra::Application
 
   # #OLD STUFF
@@ -88,6 +89,12 @@ class SlowFoodApp #< Sinatra::Application
 
   def warden_handler
     env['warden']
+=======
+  get '/login' do
+  end
+
+  get '/signup' do
+>>>>>>> dc743c3eb1f61d028566dd7fa6940f20857a8308
   end
 
   def check_authentication
