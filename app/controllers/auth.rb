@@ -16,43 +16,45 @@ class SlowFoodApp #< Sinatra::Application
   #
   # end
   #
-  # post  '/process_login' do
-  #
-  #   # 1 Try to login the user using Warden (gem)
-  #   # 2 If user is logged in, redirect back to '/'
-  #      redirect '/'
-  #   # # 3 If user fails login redirect back to '/login'
-  #   #   redirect '/login'
-  # end  # get "/" do
-  # #   erb 'index'.to_sym
-  # # end
-
-get "/protected_pages" do
-  check_authentication
-  erb 'admin_only_page'.to_sym
-end
-
-get "/login" do
-  erb '/login'.to_sym
-end
-
-post '/session' do
-  warden_handler.authenticate!
-  if warden_handler.authenticated?
-    redirect "/users/#{warden_handler.user.id}"
-  else
-    redirect "/"
+  post  '/process_login' do
+     # 1 Try to login the user using Warden (gem)
+     #check_authentication
+     # 2 If user is logged in, redirect back to '/'
+      redirect '/'
+     # # 3 If user fails login redirect back to '/login'
+     # redirect '/login'
   end
-end
 
-get "/logout" do
-  warden_handler.logout
-  redirect '/login'
-end
+  get "/protected_pages" do
+    check_authentication
+    erb 'admin_only_page'.to_sym
+  end
 
-post "/unauthenticated" do
-  redirect "/fuckoff"
-end
+  get "/login" do
+    erb '/login'.to_sym
+  end
+
+  get "/register" do
+    erb '/register'.to_sym
+  end
+
+  post '/session' do
+    warden_handler.authenticate!
+    if warden_handler.authenticated?
+      redirect "/users/#{warden_handler.user.id}"
+    else
+      redirect "/"
+    end
+  end
+
+  get "/logout" do
+    warden_handler.logout
+    redirect '/login'
+  end
+
+  post "/unauthenticated" do
+    redirect "/fuckoff"
+  end
 
   # Warden configuration code
   use Rack::Session::Cookie, secret: "IdoNotHaveAnySecret"
