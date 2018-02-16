@@ -29,13 +29,13 @@ class SlowFoodApp #< Sinatra::Application
     #binding.pry
     user = User.new(params)
     if user.valid?
-      #binding.pry
+      binding.pry
       user.save
       env['warden'].authenticate!
       flash[:success] = "Successfully created account for #{current_user.email}"
         redirect '/'
     else
-      #binding.pry
+      binding.pry
       flash[:error] = user.errors.full_messages.join(',')
       redirect '/auth/create'
     end
