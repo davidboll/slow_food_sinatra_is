@@ -1,9 +1,8 @@
 class SlowFoodApp
-  get '/login' do
 
+  get '/login' do
   end
 
   get '/signup' do
-
   end
 end
