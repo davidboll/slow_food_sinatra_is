@@ -1,21 +1,8 @@
 require 'sinatra'
 require 'warden'
 
-class SlowFoodApp #< Sinatra::Application
+class SlowFoodApp
 
-  # #OLD STUFF
-  # get '/' do
-  #   erb :welcome
-  # end
-  #
-  # get '/login' do
-  #   erb :login
-  # end
-  #
-  # get '/signup' do
-  #
-  # end
-  #
   post  '/process_login' do
      # 1 Try to login the user using Warden (gem)
      #check_authentication
@@ -38,6 +25,19 @@ class SlowFoodApp #< Sinatra::Application
     erb '/register'.to_sym
   end
 
+  post "/auth/create" do
+    user = User.new(params[:user])
+    if user.valid?
+      user.save
+      env['warden'].authenticate!
+      flash[:success] = "Successfully created account for #{current_user.username}"
+      redirect '/'
+    else
+      flash[:error] = user.errors.full_messages.join(',')
+    end
+    redirect '/auth/create'
+  end
+
   post '/session' do
     warden_handler.authenticate!
     if warden_handler.authenticated?
@@ -58,7 +58,7 @@ class SlowFoodApp #< Sinatra::Application
 
   # Warden configuration code
   use Rack::Session::Cookie, secret: "IdoNotHaveAnySecret"
-  #use Rack::Flash, accessorize: [:error, :success]
+  use Rack::Flash, accessorize: [:error, :success]
 
   use Warden::Manager do |manager|
     manager.default_strategies :password

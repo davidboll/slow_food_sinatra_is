@@ -20,7 +20,6 @@ gem 'rake'
 gem 'shotgun'
 
 gem 'warden' #*I'm using version 1.2.1*
-gem 'bcrypt' #*I'm using 3.0.1*
 
 group :test do
   gem 'capybara'
