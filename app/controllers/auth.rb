@@ -4,17 +4,14 @@ require 'warden'
 class SlowFoodApp #< Sinatra::Application
 
   post '/process_login' do
+    # Try to login the user using Warden
     if env['warden'].authenticate!
       redirect '/', notice: "Logged in #{current_user.email}"
-    else
-      redirect '/login', notice: 'This did not worked!'
+    else # If user fails login redirect back to '/login'
+      redirect '/login', notice: 'Something went wrong, please try again.'
     end
-    # 1 Try to login the user using Warden (gem)
-    #check_authentication
-    # 2 If user is logged in, redirect back to '/'
+    # If user is logged in, redirect back to '/'
     redirect '/'
-    # # 3 If user fails login redirect back to '/login'
-    # redirect '/login'
   end
 
   get '/protected_pages' do
@@ -24,6 +21,11 @@ class SlowFoodApp #< Sinatra::Application
 
   get '/login' do
     erb '/login'.to_sym
+  end
+
+  get '/logout' do
+    env['warden'].logout
+    redirect '/login'
   end
 
   get '/register' do
@@ -55,15 +57,6 @@ class SlowFoodApp #< Sinatra::Application
     else
       redirect '/'
     end
-  end
-
-  get '/logout' do
-    warden_handler.logout
-    redirect '/login'
-  end
-
-  post '/unauthenticated' do
-    redirect '/fuckoff'
   end
 
 end
