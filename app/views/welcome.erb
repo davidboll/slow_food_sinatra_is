@@ -1,10 +1,20 @@
-Welcome to Inglorious Bites!
+<div class="hero-section">
+  <div class="hero-section-text">
+    <h1>Welcome to Inglorious Bites!</h1>
+    <h4>A fine selection of specialties from Australia, Iceland, Italy, Norway and Sweden</h4>
+  </div>
+</div>
 <% @menus.each do |menu| %>
+<div id="menu" align="center">
   <h1><%= menu.name %>:</h1>
   <% menu.products.each do |product| %>
     <h4>
       <%= product.name %>
     </h4>
     <p><%= product.price %> kr </p>
+    <!-- form action="/order_create" method="post"> -->
+            <input type="hidden" name="product_id" value="<%= product.id %>">
+            <input type="submit" value="Add to plate">
+          </form>
   <% end %>
 <% end %>
