@@ -12,9 +12,9 @@
       <%= product.name %>
     </h4>
     <p><%= product.price %> kr </p>
-    <!-- form action="/order_create" method="post"> -->
+    <form action="/order_create" method="post">
             <input type="hidden" name="product_id" value="<%= product.id %>">
-            <input type="submit" value="Add to plate">
+            <a href="/cart.rb"><input type="submit" value="Add to plate"></a>
           </form>
   <% end %>
 <% end %>

@@ -7,9 +7,8 @@ Feature: Customer can add a dish to the plate
     Given There is a user in our database
     And The user is logged in as name
     And There is a dish names "Pizza" in our database
-    And The dish price is "120"
-    And I can see the menu
 
   Scenario: User clicks add_to_plate button
-    Given I click add_to_plate for "Pizza"
-    And My order should contain "1" item
+    When I click add_to_plate for "Pizza"
+    Then My order should contain "1" item
+    And The dish price is "120"
