@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'warden'
 
-class SlowFoodApp #< Sinatra::Application
+class SlowFoodApp
 
   post '/process_login' do
     # Try to login the user using Warden
@@ -12,11 +12,6 @@ class SlowFoodApp #< Sinatra::Application
     end
     # If user is logged in, redirect back to '/'
     redirect '/'
-  end
-
-  get '/protected_pages' do
-    check_authentication
-    erb 'admin_only_page'.to_sym
   end
 
   get '/login' do
@@ -44,7 +39,7 @@ class SlowFoodApp #< Sinatra::Application
         redirect '/auth/create', notice: message
       end
     else
-      message = 'The fuck is wrong with you?'
+      message = 'Sorry, something went wrong - Please try again!'
       redirect '/auth/create', notice: message
     end
 
