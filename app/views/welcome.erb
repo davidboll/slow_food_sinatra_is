@@ -2,17 +2,14 @@
   <div class="hero-section">
   <div class="hero-section-text">
     <h1>Welcome to Inglorious Bites!</h1>
-    <h4></h4>
   </div>
 </div>
 <% @menus.each do |menu| %>
 <div id="menu" align="center">
-  <h1><%= menu.name %>:</h1>
+  <h3><%= menu.name %>:</h3>
   <% menu.products.each do |product| %>
-    <h4>
-      <%= product.name %>
-    </h4>
-    <p><%= product.price %> kr </p>
+    <h4><%= product.name %></h4>
+    <p><%= product.price %> Kr </p>
     <form action="/order_create" method="post">
             <input type="hidden" name="product_id" value="<%= product.id %>">
             <a href="/cart.rb"><input type="submit" value="Add to plate"></a>
