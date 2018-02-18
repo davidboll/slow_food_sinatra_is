@@ -1,0 +1,83 @@
+.navbar {
+  z-index: 2;
+  margin-top: 0;
+  background-color: #B62A1D;
+  color: black;
+  font-family: 'Sancreek', cursive;
+  letter-spacing: 4px;
+  position: sticky;
+  top: 0;
+}
+
+.navbar-dark .navbar-brand {
+  color: red;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: white;
+}
+body {
+background-image: url(../img/table.jpg);
+}
+
+h1 {
+font-family: 'Sancreek', cursive;
+color: #B62A1D;
+text-align: center;
+font-size: 100px;
+padding-top: 100px;
+}
+
+h3 {
+font-family: 'Sancreek', cursive;
+color: #FEF5E7;
+text-align: center;
+font-size: 77px;
+padding-top: 100px;
+}
+
+h4 {
+font-family: 'Sancreek', cursive;
+color: #FEF5E7;
+text-align: center;
+}
+
+label {
+font-family: 'Sancreek', cursive;
+font-size: 25px;
+color: white;
+}
+
+.navbar-light .navbar-toggler-icon{
+  background-color: #FEF5E7;
+}
+
+.navbar-light .navbar-nav .active{
+  text-color: #FEF5E7;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  color: #B62A1D;
+  font-family: 'Sancreek', cursive;
+  font-size: 24px;
+  margin-top: 30px;
+}
+
+button, input {
+  background-color: #FEF5E7;
+  margin-top: 30px;
+}
+
+a:visited {
+  color: white;
+  font-family: 'Sancreek', cursive;
+}
+
+p {
+  font-size: 30px;
+  color: black;
+  font-family: 'Sancreek', cursive;
+}
+
+* {
+  text-align: center;
+}
