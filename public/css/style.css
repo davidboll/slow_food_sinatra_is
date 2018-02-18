@@ -1,0 +1,16 @@
+body {
+background-image: url(../img/table.jpg);
+}
+
+h1 {
+font-family: 'Sancreek', cursive;
+color: #8A0808;
+text-align: center;
+font-size: 100px;
+}
+
+h4 {
+font-family: 'Sancreek', cursive;
+color: white;
+text-align: center;
+}

@@ -1,7 +1,8 @@
-<div class="hero-section">
+<wrapper>
+  <div class="hero-section">
   <div class="hero-section-text">
     <h1>Welcome to Inglorious Bites!</h1>
-    <h4>A fine selection of specialties from Australia, Iceland, Italy, Norway and Sweden</h4>
+    <h4></h4>
   </div>
 </div>
 <% @menus.each do |menu| %>
@@ -16,5 +17,6 @@
             <input type="hidden" name="product_id" value="<%= product.id %>">
             <a href="/cart.rb"><input type="submit" value="Add to plate"></a>
           </form>
+</header>
   <% end %>
 <% end %>
