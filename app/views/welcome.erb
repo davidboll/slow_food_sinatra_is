@@ -1,4 +1,4 @@
-<wrapper>
+<header>
   <div class="hero-section">
   <div class="hero-section-text">
     <h1>Welcome to Inglorious Bites!</h1>
@@ -8,8 +8,16 @@
 <div id="menu" align="center">
   <h3><%= menu.name %>:</h3>
   <% menu.products.each do |product| %>
-    <h4><%= product.name %></h4>
-    <p><%= product.price %> Kr </p>
+      <p><%= product.price %> Kr </p>
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="<%= product.image %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= product.name %></h5>
+          <p class="card-text"></p>
+        </div>
+      </div>
+    </div>
     <form action="/order_create" method="post">
             <input type="hidden" name="product_id" value="<%= product.id %>">
             <a href="/cart.rb"><input type="submit" value="Add to plate"></a>
