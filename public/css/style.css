@@ -4,13 +4,26 @@ background-image: url(../img/table.jpg);
 
 h1 {
 font-family: 'Sancreek', cursive;
-color: #7B241C;
+color: #B62A1D;
 text-align: center;
 font-size: 100px;
 }
 
+h3 {
+font-family: 'Sancreek', cursive;
+color: #FEF5E7;
+text-align: center;
+font-size: 80px;
+}
+
 h4 {
 font-family: 'Sancreek', cursive;
-color: white;
+color: #FEF5E7;
 text-align: center;
+}
+
+label {
+font-family: 'Sancreek', cursive;
+font-size: 30px;
+color: white;
 }
